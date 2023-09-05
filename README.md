@@ -4,7 +4,7 @@ Discovery to Multi-Tuple Conflict Resolution`.
 Authors: Daomin JI, Hui Luo, Zhifeng Bao, J. Shane Culpepper
 
 ##Benchmarks
-For the used benchmarks, please visit [this link]（https://zenodo.org/record/8313382） to download our benchmarks. The whole benmarks are created based on two data pools, `Real` and `Join`, from a VLDB 23 Paper, `Integrating Data Lakes`. For more information about this paper, please visit [ALITE](https://github.com/northeastern-datalab/alite).  
+For the used benchmarks, please visit [this link](https://zenodo.org/record/8313382） to download our benchmarks. The whole benmarks are created based on two data pools, `Real` and `Join`, from a VLDB 23 Paper, `Integrating Data Lakes`. For more information about this paper, please visit [ALITE](https://github.com/northeastern-datalab/alite).  
 `Real` has 11 datasets and `Join` has 28 datasets. We shortly term those datasets as R1-R11 (from `Real`) and J1-J28 (fro `Join`). In original benchmarks, each dataset has several input tables to be integrated. In our paper, those input tables are first integrated into a single table T by outer-union as input of our tasks. 
 ###How to use our Benchmarks
 The benchmarks are divided into two tasks, `integrable set discovery` and `multi-tuple conflict resolution`.
