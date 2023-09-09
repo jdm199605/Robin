@@ -14,7 +14,8 @@ from model import AICJNet
 import torch.optim as optim
 from data import TableDataset
 from torch.utils.data import DataLoader
-from helper import find_connected_components, HungarianAlgorithm
+from helper import find_connected_components, HungarianAlgorithm, handle_tuple_pair
+
 
 
 input_path = '../tables/R1/'
@@ -22,7 +23,7 @@ saved_model = '../checkpoints/ckp.pth'
 
 model_name = 'bert-base-uncased'
 
-model = AICJNet(model_name, 768, 8)
+model = AICJNet(model_name, 768, 8, 0, 256)
 checkpoint = torch.load(saved_model)
 model.load_state_dict(checkpoint['model_state_dict'])
 
@@ -51,10 +52,10 @@ for i in range(size):
     t1 = table.iloc[i]
     for j in range(i + 1, size):
         t2 = table.iloc[j]
-        pair = [[t1, t2]]
-        integrability = model(pair)
-        graphM[x, y] = 1
-        graphM[y, x] = 1
+        inputs, mask = handle_tuple_pair(t1, t2, model_name)
+        integrability = torch.argmax(model(inputs, mask)[0], dim=1)[0]
+        graphM[i, j] = 1
+        graphM[j, i] = 1
         if integrability:
             if [i,j] in GT_pairwise:
                 TP += 1

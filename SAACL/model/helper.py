@@ -2,6 +2,9 @@
 import numpy as np
 from collections import deque
 import os
+import pandas as pd
+from transformers import BertTokenizer, BertModel
+import torch
 
 def dfs(graph, node, visited, component):
     visited[node] = True
@@ -57,6 +60,47 @@ def perform_backtranslation(batch_texts, first_model, first_model_tkn, second_mo
     
     return final_texts
 
+def pad_sequence(seq, max_len):
+    for s in seq:
+        num_zeros = max_len - len(s)
+        s += [0] * num_zeros
+    return seq
+
+def handle_tuple_pair(t1, t2, model_name):
+    tokenizer = BertTokenizer.from_pretrained(model_name)
+    attr_num = len(t1)
+    inputs = []
+    mask = []
+    max_len = 0
+    for i in range(attr_num):
+        if pd.isna(t1[i]):
+            input_ids = tokenizer.encode("[NULL]", add_special_tokens=True)
+            mask.append(0)
+        else:
+            input_ids = tokenizer.encode(str(t1[i]), add_special_tokens=True)
+            mask.append(1)
+        max_len = max(max_len, len(input_ids))
+        inputs.append(input_ids)
+    
+    for i in range(attr_num):
+        if pd.isna(t2[i]):
+            input_ids = tokenizer.encode("[NULL]", add_special_tokens=True)
+            mask.append(0)
+        else:
+            input_ids = tokenizer.encode(str(t2[i]), add_special_tokens=True)
+            mask.append(1)
+        max_len = max(max_len, len(input_ids))
+        inputs.append(input_ids)
+        
+    inputs = pad_sequence(inputs, max_len)
+    inputs = torch.tensor(inputs)
+    mask = torch.tensor(mask)
+    
+    inputs = inputs.view(-1, attr_num, max_len)
+    mask = mask.view(-1, attr_num)
+    
+    return inputs, mask
+    
 class HungarianAlgorithm:
     def __init__(self, graph):
         self.graph = graph

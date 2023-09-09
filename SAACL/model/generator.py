@@ -6,7 +6,7 @@ import pandas as pd
 import glob
 import numpy as np
 import typo
-from helper import perform_translation
+from helper import perform_backtranslation
 from transformers import MarianMTModel, MarianTokenizer, pipeline
 import nltk
 from nltk.corpus import wordnet
@@ -33,7 +33,7 @@ def attribute_deletion(t, attr):
     
 def attribute_substitution(t, attr):
     original_text = [t[attr]]
-    backtranslated_text = perform_translation(original_text, first_model, first_model_tkn, second_model, \
+    backtranslated_text = perform_backtranslation(original_text, first_model, first_model_tkn, second_model, \
                                               second_model_tkn, "fr", "en")[0]
     t[attr] = backtranslated_text
     return t
