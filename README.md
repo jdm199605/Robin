@@ -1,7 +1,6 @@
 ## Overview
 This is the repository of source code for paper `Robust Table Integration in Data Lakes: From Integrable Set
 Discovery to Multi-Tuple Conflict Resolution`.  
-Authors: Daomin JI, Hui Luo, Zhifeng Bao, J. Shane Culpepper
 
 ## Benchmarks
 For the used benchmarks, please visit [this link](https://zenodo.org/record/8353112) to download our benchmarks. The whole benmarks are created based on two data pools, `Real` and `Join`, from a VLDB 23 Paper, `Integrating Data Lakes`. For more information about this paper, please visit [ALITE](https://github.com/northeastern-datalab/alite).  
@@ -30,5 +29,3 @@ Go to SSACL directory, run `python train.py` to train SSACL with default paramet
 run `Eval.py` to use the trained SSACL model to predict the integrability for any tuples in table T on a certain dataset. Then a DFS algorithm will automatically run to get all the integrable sets. This task is evaluted by F1 and similarity (Please refer to Sec. 6.2 for more information).
 ### ICLCF
 Go to ICLCF directory, since this is a train-free method, you can directly run `python eval.py` to make prediction on a specific dataset. The evalution metric is accuracy (Please refer to Sec. 6.2 for  more informtation).
-## Contact
-Thanks for your interest in this work. If you have any questions, please do not hesitate to send an email to `daomin.ji@student.rmit.edu.au`. 
