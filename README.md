@@ -1,6 +1,7 @@
 ## Overview
-This is the repository of source code for paper `Robust Table Integration in Data Lakes: From Integrable Set
-Discovery to Multi-Tuple Conflict Resolution`.  
+This is the repository of source code for paper `Table Integration in Data Lakes Unleashed: Pairwise
+Integrability Judgment, Integrable Set Discovery, and
+Multi-Tuple Conflict Resolution`.  
 
 ## Benchmarks
 For the used benchmarks, please visit [https://zenodo.org/records/10547371](https://zenodo.org/records/10547371) to download our benchmarks. The whole benmarks are created based on two dataset repositories, `Real` and `Join`, from a VLDB 23 Paper, `Integrating Data Lakes`. For more information about this paper, please visit [ALITE](https://github.com/northeastern-datalab/alite).  
