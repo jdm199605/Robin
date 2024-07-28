@@ -3,7 +3,7 @@ This is the repository of source code for paper `Robust Table Integration in Dat
 Discovery to Multi-Tuple Conflict Resolution`.  
 
 ## Benchmarks
-For the used benchmarks, please visit [https://zenodo.org/records/10547371](https://zenodo.org/records/10547371) to download our benchmarks. The whole benmarks are created based on two data pools, `Real` and `Join`, from a VLDB 23 Paper, `Integrating Data Lakes`. For more information about this paper, please visit [ALITE](https://github.com/northeastern-datalab/alite).  
+For the used benchmarks, please visit [https://zenodo.org/records/10547371](https://zenodo.org/records/10547371) to download our benchmarks. The whole benmarks are created based on two dataset repositories, `Real` and `Join`, from a VLDB 23 Paper, `Integrating Data Lakes`. For more information about this paper, please visit [ALITE](https://github.com/northeastern-datalab/alite).  
 `Real` has 11 datasets and `Join` has 28 datasets. We shortly term those datasets as R1-R11 (from `Real`) and J1-J28 (fro `Join`). In original benchmarks, each dataset has several input tables to be integrated. In our paper, those input tables are first integrated into a single table T by outer-union as input of our tasks. 
 ### How to use our Benchmarks
 The benchmarks are divided into two tasks, `integrable set discovery` and `multi-tuple conflict resolution`.
