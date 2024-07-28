@@ -5,6 +5,7 @@ import torch
 import pandas as pd
 import argparse
 import random
+import numpy as np
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--k', type = int, default = 35)
